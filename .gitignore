@@ -1,0 +1,82 @@
+# ─── Ambiente Python ──────────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+*.egg-info/
+
+# ─── Node / Next.js ───────────────────────────────────────────────────────────
+node_modules/
+.next/
+out/
+build/
+.npmrc
+.snowflake/
+.v0-trash/
+.vercel/
+__v0_runtime_loader.js
+__v0_devtools.tsx
+__v0_jsx-dev-runtime.ts
+next.user-config.*
+tsconfig.tsbuildinfo
+
+# ─── Variáveis de ambiente — NUNCA subir ──────────────────────────────────────
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+app/.env
+
+# ─── Banco de dados local ─────────────────────────────────────────────────────
+*.sqlite3
+*.db
+
+# ─── Imagens fora de pastas públicas ──────────────────────────────────────────
+imagens/
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.webp
+*.gif
+!nutriAI/public/*.png
+!nutriAI/public/*.jpg
+!nutriAI/public/*.jpeg
+!nutriAI/public/*.svg
+!nutriAI/public/*.webp
+!nutriAI/public/*.gif
+
+# ─── Relatórios e logs internos Markdown ──────────────────────────────────────
+/*.md
+!README.md
+relatorio/
+
+# ─── Sistema operacional ──────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+Thumbs.db
+desktop.ini
+
+# ─── IDEs e editores ──────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── Claude Code (sessões locais) ─────────────────────────────────────────────
+.claude/

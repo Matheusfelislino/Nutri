@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:15
+    container_name: nutriai_db_container
+    restart: always
+    environment:
+      POSTGRES_USER: nutriai_user
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: nutriai_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nutriai_user -d nutriai_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  backend:
+    build:
+      context: ./app
+    container_name: nutriai_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://nutriai_user:123456@db:5432/nutriai_db
+      SECRET_KEY: f8a9c1e4b7d2f6a9c3e8b1d4f7a2c9e6b3d1f8a4c7e9b2d6f1a3c5e7b9d2f4
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./nutriAI
+    container_name: nutriai_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
